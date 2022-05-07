@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/button.css" />
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+  <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 </head>
 <body>
 
@@ -20,13 +23,29 @@
     <h3 id="studentInfo">
         <span id="name"></span>
         <span id="last"></span>
+        <span id="bloodGroup"></span>
+        <span id="drugAllergy"></span>
+        <span id="congenitalDisease"></span>
+        <span id="วิธีแก้โรคประจําตัว"></span>
         <span id="error">Not Found Data / Complete Student ID</span>
-
     </h3>
 
       <div>
         <img class="img-responsive" id="StudentPortrait" src="image/notFound.png">
       </div>
+
+      <hr>
+      <div>
+      <h2 id="action_button">การปฏิบัติ</h2>
+      <div class="frame">
+        <button class="custom-btn btn-1" onclick="addAction(this)">กลับห้องเรียน</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">นอนพักห้องพยาบาล</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">ส่งโรงพยาบาล</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานผู้ปกครอง</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานครูประจำชั้น</button>
+      </div>
+    </div>
+
   </div>
   
   <div class="col-xs-6 col-md-4">
@@ -52,9 +71,10 @@
         if (['1','2','3',1,2,3].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this)" 
         list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
 
-        <a href="#action">การปฏิบัติ</a>* <input type="text" id="action"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value=''"></a><br>
-        <a href="#advice">คำแนะนำ</a> <input type="text" id="advice"name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value=''"></a><br>
-        <a href="#note">หมายเหตุ</a> <input type="text" id="note"name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
+        <a href="#medicine_button">ยา</a>* <input type="text" id="medicine"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value=''"></a><br>
+        <a href="#action_button">การปฏิบัติ</a>* <input type="text" id="action"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value=''"></a><br>
+        <a href="#advice_button">คำแนะนำ</a> <input type="text" id="advice"name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value=''"></a><br>
+        หมายเหตุ <input type="text" id="note"name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
 
 
         <br>
@@ -64,20 +84,62 @@
         </center>
         <hr>
       </form>
-
       <div>
-      <h2 id="action">การปฎิบัติ</h2>
+      <h2 id="medicine_button">ยา</h2>
       <div class="frame">
-        <button class="custom-btn btn-1" onclick="addAction(this)">กลับห้องเรียน</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">นอนพักห้องพยาบาล</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">ส่งโรงพยาบาล</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานผู้ปกครอง</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานครูประจำชั้น</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Advice</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Air-X</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Alum milk</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ammonia</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Amsol</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Atarax</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Buscopan</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Calamine-Lotion</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Carityne</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Cold-pack</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Counter-pain</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">CPM</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dermacin</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dramamine</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dry-dressing</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Elastic-bandage</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Eye-pad</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Flemex</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Glycerin of Borax</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hirudoid</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hot-pack</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Kenalog</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">M. carminative</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Magesto-F</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Motilum</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Neobun (แก้ปวดฟัน)</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Optal</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ORS</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Oscin</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 325</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 500</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol Syr</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Plaster</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ponstan</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Reparil-gel</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Rest</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">RFB</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Spint</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Steri-strip</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Tapid-sponge</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Voltaren</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Wicks</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาหม่อง</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาธาตุน้ำขาว</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">พิมเสนน้ำ</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">น้ำหวาน</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ล้างตา</button>
       </div>
     </div>
+    
     <hr>
       <div>
-      <h2 id="advice">คำแนะนำ</h2>
+      <h2 id="advice_button">คำแนะนำ</h2>
       <div class="frame">
         <button class="custom-btn btn-1" onclick="addAdvice(this)">ไม่ให้แผลถูกน้ำ</button>
         <button class="custom-btn btn-1" onclick="addAdvice(this)">ทำแผลวันละครั้ง</button>
@@ -108,6 +170,9 @@
           }
           function addPosition(obj){
             document.getElementById('position').value = `${obj.innerHTML}`
+          }
+          function addMedicine(obj){
+            document.getElementById('medicine').value = `${obj.innerHTML}`
           }
           function addAction(obj){
             document.getElementById('action').value = document.getElementById('action').value.replace(`${obj.innerHTML}, `,"") + `${obj.innerHTML}, `
@@ -239,10 +304,20 @@
     function main(data) {
       var val = document.getElementById('SearchVID').value
       document.getElementById('SearchVID').value = val.replace(/\D/g,'');
+      
       console.log(val.length,val)
-      if (val.length === 5) {
-        var studentData = data[val]
-        console.log(studentData)
+      var studentData = data[val]
+      if (data[val] === undefined) {
+        document.getElementById('studentID').value = ""
+        // document.getElementById('studentInfo').style.display = "none"
+        document.getElementById('name').style.display = "none"
+        document.getElementById('last').style.display = "none"
+        document.getElementById('error').style.display = "initial"
+        document.getElementById('StudentPortrait').src = "image/notFound.png"
+      }
+      else if (val.length === 5 && data[val] !== undefined) {
+        // console.log(studentData)
+        document.getElementById('studentID').value = val
         document.getElementById('name').innerHTML = studentData["name"]
         document.getElementById('last').innerHTML = studentData["last"]
         document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
@@ -253,11 +328,7 @@
         document.getElementById('StudentPortrait').src = "image/"+val+".jpg"
       }
       else {
-        // document.getElementById('studentInfo').style.display = "none"
-        document.getElementById('name').style.display = "none"
-        document.getElementById('last').style.display = "none"
-        document.getElementById('error').style.display = "initial"
-        document.getElementById('StudentPortrait').src = "image/notFound.png"
+        
       }
     }
   </script>

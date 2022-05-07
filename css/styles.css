@@ -289,14 +289,17 @@ button  {
 #damage {
   width: 10%;
 }
+#medicine {
+  width: 84%;
+}
 #action {
-  width: 73%;
+  width: 75%;
 }
 #advice {
-  width: 76%;
+  width: 78%;
 }
 #note {
-  width: 75%;
+  width: 77%;
 }
 #timestamp {
   cursor: not-allowed;
