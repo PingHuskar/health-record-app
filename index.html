@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>บันทึกสุขภาพนักเรียน โรงเรียน...</title>
+  <link rel="shortcut icon" href="https://renderapi.s3.amazonaws.com/Gpqwua0Th.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/button.css" />
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</head>
+<body>
+
+  
+
+  <script src="js/moment.min.js"></script>
+  <div class="row">
+  <div class="col-md-4">
+    <h3 id="studentInfo">
+        <span id="name"></span>
+        <span id="last"></span>
+        <span id="error">Not Found Data / Complete Student ID</span>
+
+    </h3>
+
+      <div>
+        <img class="img-responsive" id="StudentPortrait" src="image/notFound.png">
+      </div>
+  </div>
+  
+  <div class="col-xs-6 col-md-4">
+
+    <!-- https://codepen.io/melnik909/pen/BZpJLN -->
+    <div class="page" style="margin-top: 3vh;margin-bottom: 1vh;">
+    <label class="field field_v1">
+      <input class="field__input" type="text" name="SearchVID" id="SearchVID" onkeyup="main(jsonParsedArray)" maxlength="5" default="44444" style="color:white;" autofocus>
+      <span class="field__label-wrap">
+        <span class="field__label">Enter Student ID : </span>
+      </span>
+    </label>
+  </div>
+
+    <h1>ฟอร์มบันทึก</h1>
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLSdca0nYFvuCH8NogNo3T1WxN8zItYf_MHH7R1mh8_Pa3AUKTQ/formResponse" method="post" autocomplete="on">
+        เลขประจำตัว <input type="number" id="A" value="0" min="0" name="entry.21566314" disabled>
+        บันทึกเวลา <input type="text" id="timestamp" name="timestamp" required disabled><br>
+        <a href="#">อาการ</a>* <input type="text" id="symptom"name="symptom" required><br>
+
+        <a href="#ตำแหน่ง">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off">
+        ระดับความรุนแรง <input type="number" max="3" min="1" onchange="dmgContext(this)" list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
+
+        <a href="#action">การปฏิบัติ</a>* <input type="text" id="action"name="action" required><br>
+        <a href="#advice">คำแนะนำ</a> <input type="text" id="advice"name="advice"><br>
+        <a href="#note">หมายเหตุ</a> <input type="text" id="note"name="note"><br>
+
+
+        <br>
+        <center>
+          <button type="submit" class="bg-success text-white" style="background-color:green">Submit</button>
+          <button type="reset" class="bg-danger text-white" style="background-color:red">Reset</button>
+        </center>
+        <hr>
+      </form>
+
+      <div>
+      <h2 id="action">การปฎิบัติ</h2>
+      <div class="frame">
+        <button class="custom-btn btn-1" onclick="addAction(this)">กลับห้องเรียน</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">นอนพักห้องพยาบาล</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">ส่งโรงพยาบาล</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานผู้ปกครอง</button>
+        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานครูประจำชั้น</button>
+      </div>
+    </div>
+    <hr>
+      <div>
+      <h2 id="advice">คำแนะนำ</h2>
+      <div class="frame">
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ไม่ให้แผลถูกน้ำ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ทำแผลวันละครั้ง</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารตรงเวลา</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารอ่อน ย่อยง่าย</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">งดนม</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักผ่อนให้เพียงพอ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ดื่มน้ำให้มาก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักการใช้งานกล้ามเนื้อ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบเย็นภายใน 24 ชั่วโมงแรก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบร้อนหลัง 24 ชั่วโมง</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">สังเกตอาการทางสมองภายใน 24 ชั่วโมงแรก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ถ้าอาการไม่ดีขึ้นควรพบแพทย์</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ควรปรึกษาแพทย์ผู้เชี่ยวชาญ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <hr>
+    <div>
+      <h2 id="symptom">อาการ</h2>
+      <div class="frame">
+        <script type="text/javascript">
+          function addSymptom(obj){
+            document.getElementById('symptom').value = document.getElementById('symptom').value.replace(`${obj.innerHTML}, `,"") + `${obj.innerHTML}, `
+          }
+          function addPosition(obj){
+            document.getElementById('position').value = `${obj.innerHTML}`
+          }
+          function addAction(obj){
+            document.getElementById('action').value = document.getElementById('action').value.replace(`${obj.innerHTML}, `,"") + `${obj.innerHTML}, `
+          }
+          function addAdvice(obj){
+            document.getElementById('advice').value = document.getElementById('advice').value.replace(`${obj.innerHTML}, `,"") + `${obj.innerHTML}, `
+          }
+          function dmgContext(obj) {
+            var dmgValue = document.getElementById('damage').value
+            var dmgContextVal;
+            switch(dmgValue) {
+              case "1":
+                dmgContextVal = "น้อย"
+                document.getElementById('damage_context').style.color = '#7FBD7A'
+                break;
+              case "2":
+                dmgContextVal = "ปานกลาง"
+                document.getElementById('damage_context').style.color = 'orange'
+                break;
+                case "3":
+                dmgContextVal = "มาก"
+                document.getElementById('damage_context').style.color = '#FF5656'
+                break;
+              }
+            document.getElementById('damage_context').innerHTML = `(${dmgContextVal})`
+          }
+        </script>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลถลอก</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฟกช้ำ</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลตัด</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฉีกขาด</button>
+
+      </div>
+    </div>
+    <hr>
+    <div>
+      <h2 id="ตำแหน่ง">ตำแหน่ง</h2>
+      <div class="frame">
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ศรีษะ</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">หน้าผาก</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">คิ้ว</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ตา</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">จมูก</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">หู</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">คอ</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">แขน</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ลำตัว</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ศอก</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">มือ</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ขา</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">เข่า</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">เท้า</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ลิ้นปี่</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ชายโครงซ้าย</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">ชายโครงขวา</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this)">สะดือ</button>
+
+      </div>
+    </div>
+    <hr>
+    
+
+  </div>
+
+</div>
+	
+
+	<script>
+    var jsonArray = '{"44444":{"name": "C","last":"D"}, "44447":{"name": "E","last":"G"}}'
+    var jsonParsedArray = JSON.parse(jsonArray);
+  
+    function main(data) {
+      var val = document.getElementById('SearchVID').value
+      document.getElementById('SearchVID').value = val.replace(/\D/g,'');
+      console.log(val.length)
+      if (val.length === 5) {
+        var studentData = data[val]
+        console.log(studentData)
+        document.getElementById('A').value = val
+        document.getElementById('name').innerHTML = studentData["name"]
+        document.getElementById('last').innerHTML = studentData["last"]
+        document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
+        // document.getElementById('studentInfo').style.display = "initial"
+        document.getElementById('name').style.display = "initial"
+        document.getElementById('last').style.display = "initial"
+        document.getElementById('error').style.display = "none"
+        document.getElementById('StudentPortrait').src = "image/"+val+".jpg"
+      }
+      else {
+        // document.getElementById('studentInfo').style.display = "none"
+        document.getElementById('name').style.display = "none"
+        document.getElementById('last').style.display = "none"
+        document.getElementById('error').style.display = "initial"
+        document.getElementById('StudentPortrait').src = "image/notFound.png"
+      }
+    }
+  </script>
+
+	</center>
+</body>
+</html>
