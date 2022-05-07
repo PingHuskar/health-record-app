@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>บันทึกสุขภาพนักเรียน โรงเรียน...</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>บันทึกสุขภาพนักเรียน โรงเรียน...</title>
   <link rel="shortcut icon" href="https://renderapi.s3.amazonaws.com/Gpqwua0Th.png" type="image/x-icon">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/button.css" />
+  <link rel="stylesheet" type="text/css" href="css/button.css" />
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
 <body>
@@ -43,16 +43,18 @@
 
     <h1>ฟอร์มบันทึก</h1>
       <form action="https://docs.google.com/forms/d/e/1FAIpQLSdca0nYFvuCH8NogNo3T1WxN8zItYf_MHH7R1mh8_Pa3AUKTQ/formResponse" method="post" autocomplete="on">
-        เลขประจำตัว <input type="number" id="A" value="0" min="0" name="entry.21566314" disabled>
+        เลขประจำตัว <input type="number" id="studentID" name="entry.21566314" disabled>
         บันทึกเวลา <input type="text" id="timestamp" name="timestamp" required disabled><br>
-        <a href="#">อาการ</a>* <input type="text" id="symptom"name="symptom" required><br>
+        <a href="#">อาการ</a>* <input type="text" id="symptom"name="symptom" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value=''"></a><br>
 
-        <a href="#ตำแหน่ง">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off">
-        ระดับความรุนแรง <input type="number" max="3" min="1" onchange="dmgContext(this)" list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
+        <a href="#ตำแหน่ง">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value=''"></a><br>
+        ระดับความรุนแรง <input type="number" max="3" min="1" onchange="
+        if (['1','2','3',1,2,3].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this)" 
+        list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
 
-        <a href="#action">การปฏิบัติ</a>* <input type="text" id="action"name="action" required><br>
-        <a href="#advice">คำแนะนำ</a> <input type="text" id="advice"name="advice"><br>
-        <a href="#note">หมายเหตุ</a> <input type="text" id="note"name="note"><br>
+        <a href="#action">การปฏิบัติ</a>* <input type="text" id="action"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value=''"></a><br>
+        <a href="#advice">คำแนะนำ</a> <input type="text" id="advice"name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value=''"></a><br>
+        <a href="#note">หมายเหตุ</a> <input type="text" id="note"name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
 
 
         <br>
@@ -98,6 +100,7 @@
     <hr>
     <div>
       <h2 id="symptom">อาการ</h2>
+      <br>
       <div class="frame">
         <script type="text/javascript">
           function addSymptom(obj){
@@ -132,11 +135,68 @@
             document.getElementById('damage_context').innerHTML = `(${dmgContextVal})`
           }
         </script>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลถลอก</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฟกช้ำ</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลตัด</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฉีกขาด</button>
-
+        
+        <div style="background-color:#F00">
+          <h3>บาดแผล</h3>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลถลอก</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฟกช้ำ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลตัด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฉีกขาด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลถูกแทง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลไฟไหม้</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลอื่น ๆ</button>
+        </div>
+        <div style="background-color:#E00">
+          <h3>กล้ามเนื้อเคล็ด ขัดยอก</h3>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">เท้าพลิก</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดหลัง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดคอ</button>
+        </div>
+        <div style="background-color:#E00">
+          <h3>กล้ามเนื้อเคล็ด ขัดยอก</h3>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">เท้าพลิก</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดหลัง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดคอ</button>
+        </div>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">กระดูกหัก แตก</button>
+        <div style="background-color:#E00">
+          <h3>ปวดท้อง</h3>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดท้องกระเพาะ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดจุกเสียด อืด แน่นท้อง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ท้องเสีย</button>
+            <!-- <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดประจำเดือน</button> -->
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดท้องไม่ทราบสาเหตุ</button>
+        </div>
+        <div style="background-color:#E00">
+          <h3>ปวดศรีษะ</h3>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">นอนไม่อิ่ม</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">เมารถ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">เครียด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ไม่ทราบสาเหตุ</button>
+        </div>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">ไข้ ตัวร้อน</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">หวัด มีน้ำมูก</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">ไอ เจ็บคอ มีเสมหะ</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">คลื่นไส้ อาเจียน เวียนศรีษะ</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลในช่องปาก</button>
+        <div style="background-color:#E00">
+          <h3>ปวดฟัน</h3>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันผุ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันน้ำนมหลุด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันโยก</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันบิ่น</button>
+        </div>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">ผื่นคัน</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">แมลงสัตว์กัดต่อย</button>
+        <div style="background-color:#E00">
+          <h3>ตา</h3>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ตาอักเสบ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">ตาแดง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this)">สิ่งแปลกปลอมเข้าตา</button>
+        </div>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">เลือดกำเดา</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">เสี้ยน</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this)">อื่น ๆ</button>
       </div>
     </div>
     <hr>
@@ -170,20 +230,19 @@
   </div>
 
 </div>
-	
+  
 
-	<script>
+  <script>
     var jsonArray = '{"44444":{"name": "C","last":"D"}, "44447":{"name": "E","last":"G"}}'
     var jsonParsedArray = JSON.parse(jsonArray);
   
     function main(data) {
       var val = document.getElementById('SearchVID').value
       document.getElementById('SearchVID').value = val.replace(/\D/g,'');
-      console.log(val.length)
+      console.log(val.length,val)
       if (val.length === 5) {
         var studentData = data[val]
         console.log(studentData)
-        document.getElementById('A').value = val
         document.getElementById('name').innerHTML = studentData["name"]
         document.getElementById('last').innerHTML = studentData["last"]
         document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
@@ -203,6 +262,6 @@
     }
   </script>
 
-	</center>
+  </center>
 </body>
 </html>

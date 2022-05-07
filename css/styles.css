@@ -275,21 +275,31 @@ input {
 button  {
   margin-top: 1vh;
   margin-bottom: 1vh;
+  transition: width 1s, height 1s, transform 1s;
+}
+#studentID {
+  width: 25%;
 }
 #symptom {
-  width: 87%;
+  width: 80%;
 }
 #position {
   width: 30%;
 }
+#damage {
+  width: 10%;
+}
 #action {
-  width: 83%;
+  width: 73%;
 }
 #advice {
-  width: 85%;
+  width: 76%;
 }
 #note {
-  width: 85%;
+  width: 75%;
+}
+#timestamp {
+  cursor: not-allowed;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -300,4 +310,20 @@ h1,h2,h3,h4,h5,h6 {
   margin-bottom: 0;
   color: white;
   font-family: 'Prompt', sans-serif !important;
+}
+button[type="submit"] {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+button[type="reset"] {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+button[type="submit"]:hover {
+
+  transform: scale(3,3);
+}
+button[type="reset"]:hover {
+  transform: scale(3,3);
 }
