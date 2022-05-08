@@ -16,13 +16,11 @@ function showSymptoms() {
 
 function showPositions() {
     $(document).ready(function(){
-
             $("#symptom_box").slideUp();
             $("#position_box").slideDown();
             $("#medicine_box").slideUp();
             $("#advice_box").slideUp();
             $("#action_box").slideUp();
-
     });
 }
 
@@ -98,37 +96,76 @@ function dmgContext(obj) {
 }
 
 
+  
 
-var jsonArray = '{"44444":{"name": "C","last":"D"}, "44447":{"name": "E","last":"G"}}'
-    var jsonParsedArray = JSON.parse(jsonArray);
+// var jsonArray = '{"44444":{"name": "C","last":"D"}, "44447":{"name": "E","last":"G"}}'
+// var jsonParsedArray = JSON.parse(jsonArray);
   
     function main(data) {
-      var val = document.getElementById('SearchVID').value
-      document.getElementById('SearchVID').value = val.replace(/\D/g,'');
+        document.getElementById('SearchVID').value = data.replace(/\D/g,'');
+        if (data.length === 5) {
+            fetch("students.json")
+            .then(res => res.json())
+            .then(db => {
+                // console.log(data.length,data)
+                // console.log(db); 
+                var studentData = db[data]
+                console.log(studentData);
+                document.getElementById('name').innerHTML = studentData["name"]
+                document.getElementById('last').innerHTML = `${studentData["last"]}<br>`
+                document.getElementById('bloodGroup').innerHTML = `กรุ๊ปเลือด : ${studentData["blood"]}<br>`
+                document.getElementById('drugAllergy').innerHTML = `แพ้ยา : LoremIpsum <br>`
+                document.getElementById('congenitalDisease').innerHTML = `โรคประจําตัว : LoremIpsum <br>`
+                document.getElementById('วิธีแก้โรคประจําตัว').innerHTML = `วิธีแก้โรคประจําตัว : LoremIpsum <br>`
+                document.getElementById('StudentPortrait').src = "image/"+data+".jpg"
+                document.getElementById('name').style.display = "initial"
+                document.getElementById('last').style.display = "initial"
+                document.getElementById('bloodGroup').style.display = "initial"
+                document.getElementById('drugAllergy').style.display = "initial"
+                document.getElementById('congenitalDisease').style.display = "initial"
+                document.getElementById('วิธีแก้โรคประจําตัว').style.display = "initial"
+                document.getElementById('error').style.display = "none"
+            })
+    //   var val = document.getElementById('SearchVID').value
       
-      console.log(val.length,val)
-      var studentData = data[val]
-      if (data[val] === undefined) {
-        document.getElementById('studentID').value = ""
-        // document.getElementById('studentInfo').style.display = "none"
-        document.getElementById('name').style.display = "none"
-        document.getElementById('last').style.display = "none"
-        document.getElementById('error').style.display = "initial"
-        document.getElementById('StudentPortrait').src = "image/notFound.png"
-      }
-      else if (val.length === 5 && data[val] !== undefined) {
-        // console.log(studentData)
-        document.getElementById('studentID').value = val
-        document.getElementById('name').innerHTML = studentData["name"]
-        document.getElementById('last').innerHTML = studentData["last"]
-        document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
-        // document.getElementById('studentInfo').style.display = "initial"
-        document.getElementById('name').style.display = "initial"
-        document.getElementById('last').style.display = "initial"
-        document.getElementById('error').style.display = "none"
-        document.getElementById('StudentPortrait').src = "image/"+val+".jpg"
-      }
-      else {
+    }
+    else {
+            document.getElementById('studentID').value = ""
+            // document.getElementById('studentInfo').style.display = "none"
+            document.getElementById('name').style.display = "none"
+            document.getElementById('last').style.display = "none"
+            document.getElementById('bloodGroup').style.display = "none"
+            document.getElementById('drugAllergy').style.display = "none"
+            document.getElementById('congenitalDisease').style.display = "none"
+            document.getElementById('วิธีแก้โรคประจําตัว').style.display = "none"
+            document.getElementById('error').style.display = "initial"
+            document.getElementById('StudentPortrait').src = "image/notFound.png"
+          }
+    //   var studentData = data[val]
+    //   if (data[val] === undefined) {
+    //     document.getElementById('studentID').value = ""
+    //     // document.getElementById('studentInfo').style.display = "none"
+    //     document.getElementById('name').style.display = "none"
+    //     document.getElementById('last').style.display = "none"
+    //     document.getElementById('error').style.display = "initial"
+    //     document.getElementById('StudentPortrait').src = "image/notFound.png"
+    //   }
+    //   else if (val.length === 5 && data[val] !== undefined) {
+    //     // console.log(studentData)
+    //     document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
+    //     document.getElementById('StudentPortrait').src = "image/"+val+".jpg"
+    //     $(document).ready(function(){
+    //         $("#studentInfo").load(`${val}.txt`);
+    //     });
+    //     document.getElementById('studentID').value = val
+    //     document.getElementById('name').innerHTML = studentData["name"]
+    //     document.getElementById('last').innerHTML = studentData["last"]
+    //     // document.getElementById('studentInfo').style.display = "initial"
+    //     document.getElementById('name').style.display = "initial"
+    //     document.getElementById('last').style.display = "initial"
+    //     document.getElementById('error').style.display = "none"
+    //   }
+    //   else {
         
-      }
+    //   }
     }
