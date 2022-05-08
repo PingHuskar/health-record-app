@@ -1,56 +1,57 @@
-$(document).ready(function(){
+$(document).ready(function() {
+    $("#position_box").slideUp();
+    $("#medicine_box").slideUp();
+    $("#advice_box").slideUp();
+    $("#action_box").slideUp();
+});
+
+function showSymptoms() {
+    $(document).ready(function() {
+        $("#symptom_box").slideDown();
         $("#position_box").slideUp();
         $("#medicine_box").slideUp();
         $("#advice_box").slideUp();
         $("#action_box").slideUp();
-});
-function showSymptoms() {
-    $(document).ready(function(){
-            $("#symptom_box").slideDown();
-            $("#position_box").slideUp();
-            $("#medicine_box").slideUp();
-            $("#advice_box").slideUp();
-            $("#action_box").slideUp();
     });
 }
 
 function showPositions() {
-    $(document).ready(function(){
-            $("#symptom_box").slideUp();
-            $("#position_box").slideDown();
-            $("#medicine_box").slideUp();
-            $("#advice_box").slideUp();
-            $("#action_box").slideUp();
+    $(document).ready(function() {
+        $("#symptom_box").slideUp();
+        $("#position_box").slideDown();
+        $("#medicine_box").slideUp();
+        $("#advice_box").slideUp();
+        $("#action_box").slideUp();
     });
 }
 
 function showMedicines() {
-    $(document).ready(function(){
-            $("#symptom_box").slideUp();
-            $("#position_box").slideUp();
-            $("#medicine_box").slideDown();
-            $("#advice_box").slideUp();
-            $("#action_box").slideUp();
+    $(document).ready(function() {
+        $("#symptom_box").slideUp();
+        $("#position_box").slideUp();
+        $("#medicine_box").slideDown();
+        $("#advice_box").slideUp();
+        $("#action_box").slideUp();
     });
 }
 
 function showActions() {
-    $(document).ready(function(){
-            $("#action_box").slideDown();
-            $("#advice_box").slideDown();
-            $("#medicine_box").slideUp();
-            $("#symptom_box").slideUp();
-            $("#position_box").slideUp();
+    $(document).ready(function() {
+        $("#action_box").slideDown();
+        $("#advice_box").slideDown();
+        $("#medicine_box").slideUp();
+        $("#symptom_box").slideUp();
+        $("#position_box").slideUp();
     });
 }
 
 function showAdvices() {
-    $(document).ready(function(){
-            $("#action_box").slideDown();
-            $("#advice_box").slideDown();
-            $("#medicine_box").slideUp();
-            $("#symptom_box").slideUp();
-            $("#position_box").slideUp();
+    $(document).ready(function() {
+        $("#action_box").slideDown();
+        $("#advice_box").slideDown();
+        $("#medicine_box").slideUp();
+        $("#symptom_box").slideUp();
+        $("#position_box").slideUp();
     });
 }
 
@@ -96,15 +97,10 @@ function dmgContext(obj) {
 }
 
 
-  
-
-// var jsonArray = '{"44444":{"name": "C","last":"D"}, "44447":{"name": "E","last":"G"}}'
-// var jsonParsedArray = JSON.parse(jsonArray);
-  
-    function main(data) {
-        document.getElementById('SearchVID').value = data.replace(/\D/g,'');
-        if (data.length === 5) {
-            fetch("students.json")
+function main(data) {
+    document.getElementById('SearchVID').value = data.replace(/\D/g, '');
+    if (data.length === 5) {
+        fetch("students.json")
             .then(res => res.json())
             .then(db => {
                 // console.log(data.length,data)
@@ -133,7 +129,7 @@ function dmgContext(obj) {
                 document.getElementById('congenitalDisease').innerHTML = `โรคประจําตัว : LoremIpsum <br>`
                 document.getElementById('วิธีแก้โรคประจําตัว').innerHTML = `วิธีแก้โรคประจําตัว : LoremIpsum <br>`
                 document.getElementById('parentContact').innerHTML = `ติดต่อผู้ปกครอง : LoremIpsum <br>`
-                document.getElementById('StudentPortrait').src = "image/"+data+".jpg"
+                document.getElementById('StudentPortrait').src = "image/" + data + ".jpg"
                 document.getElementById('name').style.display = "initial"
                 document.getElementById('last').style.display = "initial"
                 document.getElementById('bloodGroup').style.display = "initial"
@@ -142,21 +138,20 @@ function dmgContext(obj) {
                 document.getElementById('วิธีแก้โรคประจําตัว').style.display = "initial"
                 document.getElementById('error').style.display = "none"
             })
-    //   var val = document.getElementById('SearchVID').value
-      
+        //   var val = document.getElementById('SearchVID').value
+
+    } else {
+        document.getElementById('studentID').value = ""
+        // document.getElementById('studentInfo').style.display = "none"
+        document.getElementById('name').style.display = "none"
+        document.getElementById('last').style.display = "none"
+        document.getElementById('bloodGroup').style.display = "none"
+        document.getElementById('drugAllergy').style.display = "none"
+        document.getElementById('congenitalDisease').style.display = "none"
+        document.getElementById('วิธีแก้โรคประจําตัว').style.display = "none"
+        document.getElementById('error').style.display = "initial"
+        document.getElementById('StudentPortrait').src = "image/notFound.png"
     }
-    else {
-            document.getElementById('studentID').value = ""
-            // document.getElementById('studentInfo').style.display = "none"
-            document.getElementById('name').style.display = "none"
-            document.getElementById('last').style.display = "none"
-            document.getElementById('bloodGroup').style.display = "none"
-            document.getElementById('drugAllergy').style.display = "none"
-            document.getElementById('congenitalDisease').style.display = "none"
-            document.getElementById('วิธีแก้โรคประจําตัว').style.display = "none"
-            document.getElementById('error').style.display = "initial"
-            document.getElementById('StudentPortrait').src = "image/notFound.png"
-          }
     //   var studentData = data[val]
     //   if (data[val] === undefined) {
     //     document.getElementById('studentID').value = ""
@@ -182,6 +177,28 @@ function dmgContext(obj) {
     //     document.getElementById('error').style.display = "none"
     //   }
     //   else {
-        
+
     //   }
+}
+
+
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 150px from the top of the document, show the button
+window.onscroll = function() {
+    scrollFunction()
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
     }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
