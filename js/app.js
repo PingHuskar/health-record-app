@@ -110,6 +110,18 @@ function dmgContext(obj) {
                 // console.log(data.length,data)
                 // console.log(db); 
                 var studentData = db[data]
+                if (studentData === undefined) {
+                    document.getElementById('studentID').value = ""
+                    // document.getElementById('studentInfo').style.display = "none"
+                    document.getElementById('name').style.display = "none"
+                    document.getElementById('last').style.display = "none"
+                    document.getElementById('bloodGroup').style.display = "none"
+                    document.getElementById('drugAllergy').style.display = "none"
+                    document.getElementById('congenitalDisease').style.display = "none"
+                    document.getElementById('วิธีแก้โรคประจําตัว').style.display = "none"
+                    document.getElementById('error').style.display = "initial"
+                    document.getElementById('StudentPortrait').src = "image/notFound.png"
+                }
                 console.log(studentData);
                 document.getElementById('name').innerHTML = studentData["name"]
                 document.getElementById('last').innerHTML = `${studentData["last"]}<br>`
