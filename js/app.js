@@ -1,17 +1,21 @@
 localStorage.setItem('pcName', 'PC1');
-localStorage.setItem('username', 'Admin1');
-
+localStorage.removeItem('username');
+while (localStorage.getItem('username') === 'null' || localStorage.getItem('username') === null || localStorage.getItem('username') === '') {
+    localStorage.setItem('username', prompt("Enter Username", "admin123"));
+}
 $(document).ready(function() {
     $("#position_box").slideUp();
     $("#medicine_box").slideUp();
     $("#advice_box").slideUp();
     $("#action_box").slideUp();
+    $("#violenceLevel_box").slideUp();
 });
 
 function showSymptoms() {
     $(document).ready(function() {
         $("#symptom_box").slideDown();
         $("#position_box").slideUp();
+        $("#violenceLevel_box").slideUp();
         $("#medicine_box").slideUp();
         $("#advice_box").slideUp();
         $("#action_box").slideUp();
@@ -22,6 +26,7 @@ function showPositions() {
     $(document).ready(function() {
         $("#symptom_box").slideUp();
         $("#position_box").slideDown();
+        $("#violenceLevel_box").slideDown();
         $("#medicine_box").slideUp();
         $("#advice_box").slideUp();
         $("#action_box").slideUp();
@@ -33,6 +38,7 @@ function showMedicines() {
         $("#symptom_box").slideUp();
         $("#position_box").slideUp();
         $("#medicine_box").slideDown();
+        $("#violenceLevel_box").slideUp();
         $("#advice_box").slideUp();
         $("#action_box").slideUp();
     });
@@ -43,6 +49,7 @@ function showActions() {
         $("#action_box").slideDown();
         $("#advice_box").slideDown();
         $("#medicine_box").slideUp();
+        $("#violenceLevel_box").slideUp();
         $("#symptom_box").slideUp();
         $("#position_box").slideUp();
     });
@@ -53,6 +60,7 @@ function showAdvices() {
         $("#action_box").slideDown();
         $("#advice_box").slideDown();
         $("#medicine_box").slideUp();
+        $("#violenceLevel_box").slideUp();
         $("#symptom_box").slideUp();
         $("#position_box").slideUp();
     });
@@ -65,6 +73,11 @@ function addSymptom(obj) {
 
 function addPosition(obj) {
     document.getElementById('position').value = `${obj.innerHTML}`
+}
+
+function addviolenceLevel(obj) {
+    document.getElementById('violenceLevel').value = `${obj.innerHTML}`
+    dmgContext(document.getElementById('violenceLevel'));
 }
 
 function addMedicine(obj) {
@@ -80,23 +93,23 @@ function addAdvice(obj) {
 }
 
 function dmgContext(obj) {
-    var dmgValue = document.getElementById('damage').value
+    var dmgValue = document.getElementById('violenceLevel').value
     var dmgContextVal;
     switch (dmgValue) {
         case "1":
             dmgContextVal = "น้อย"
-            document.getElementById('damage_context').style.color = '#7FBD7A'
+            document.getElementById('violenceLevel_context').style.color = '#7FBD7A'
             break;
         case "2":
             dmgContextVal = "ปานกลาง"
-            document.getElementById('damage_context').style.color = 'orange'
+            document.getElementById('violenceLevel_context').style.color = 'orange'
             break;
         case "3":
             dmgContextVal = "มาก"
-            document.getElementById('damage_context').style.color = '#FF5656'
+            document.getElementById('violenceLevel_context').style.color = '#FF5656'
             break;
     }
-    document.getElementById('damage_context').innerHTML = `(${dmgContextVal})`
+    document.getElementById('violenceLevel_context').innerHTML = `(${dmgContextVal})`
 }
 
 

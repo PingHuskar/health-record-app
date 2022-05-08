@@ -58,14 +58,14 @@
                 <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom" name="symptom" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value='';showSymptoms();"></a><br>
 
                 <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
-                <a href="#">ระดับความรุนแรง</a> <input type="number" max="3" min="1" onchange="
-        if (!['1','2','3'].includes(this.value)){ this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this);" list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
+                <a onclick="showPositions()">ระดับความรุนแรง</a> <input type="number" max="3" min="1" onchange="
+        if (!['1','2','3'].includes(this.value)){ this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this);" list="violenceLevel_choice" id="violenceLevel" name="violenceLevel" value="1"> &nbsp;&nbsp;&nbsp;<span id="violenceLevel_context" style="font-size:2rem"></span><br>
 
                 <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine" name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
                 <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action" name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value='';showActions()"></a><br>
                 <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice" name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value='';showAdvices();"></a><br>
                 <a href="#">หมายเหตุ</a> <input type="text" id="note" name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
-                <a href="#">ผู้ใช้</a> <input type="text" id="username" name="username" disabled> <a href="#">หมายเลขเครื่อง</a> <input type="text" id="pcName" name="pcName" disabled>
+                <a href="#">ผู้ใช้</a> <input type="text" id="username" name="username" disabled required> <a href="#">หมายเลขเครื่อง</a> <input type="text" id="pcName" name="pcName" disabled required>
                 <br><br>
                 <center>
                     <button type="submit" class="bg-success text-white" style="background-color:green">Submit</button>
@@ -169,8 +169,15 @@
                         <button class="custom-btn btn-1" onclick="addPosition(this);">ชายโครงซ้าย</button>
                         <button class="custom-btn btn-1" onclick="addPosition(this);">ชายโครงขวา</button>
                         <button class="custom-btn btn-1" onclick="addPosition(this);">สะดือ</button>
-
                     </div>
+                </div>
+                <div id="violenceLevel_box">
+                  <h2 style="background-color:coral">ระดับความรุนแรง</h2>
+                  <div class="frame">
+                    <button class="custom-btn btn-1" onclick="addviolenceLevel(this);">1</button>
+                    <button class="custom-btn btn-1" onclick="addviolenceLevel(this);">2</button>
+                    <button class="custom-btn btn-1" onclick="addviolenceLevel(this);">3</button>
+                  </div>
                 </div>
 
                 <div id="medicine_box">

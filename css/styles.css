@@ -317,16 +317,16 @@ button {
     width: 77%;
 }
 
-#damage {
+#violenceLevel {
     width: 10%;
 }
 
 #medicine {
-    width: 84%;
+    width: 87%;
 }
 
 #action {
-    width: 75%;
+    width: 74%;
 }
 
 #advice {
@@ -344,6 +344,11 @@ button {
 
 #action_box {
   margin-top: 3vh;
+}
+
+#position_box {
+  margin-top: 10vh;
+  margin-bottom: 3vh;
 }
 
 #username, #pcName {
