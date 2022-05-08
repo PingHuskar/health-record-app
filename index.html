@@ -49,16 +49,16 @@
         เลขประจำตัว <input type="number" id="studentID" name="entry.21566314" disabled>
         บันทึกเวลา <input type="text" id="timestamp" name="timestamp" required disabled><br>
         
-        <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom"name="symptom" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value=''"></a><br>
+        <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom"name="symptom" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value='';showSymptoms();"></a><br>
 
-        <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value=''"></a><br>
+        <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
         ระดับความรุนแรง <input type="number" max="3" min="1" onchange="
         if (['1','2','3'].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this)" 
         list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
 
-        <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value=''"></a><br>
-        <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value=''"></a><br>
-        <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice"name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value=''"></a><br>
+        <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
+        <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value='';showActions()"></a><br>
+        <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice"name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value='';showAdvices();"></a><br>
         หมายเหตุ <input type="text" id="note"name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
 
         <br>

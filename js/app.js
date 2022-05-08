@@ -6,61 +6,53 @@ $(document).ready(function(){
 });
 function showSymptoms() {
     $(document).ready(function(){
-        $("#symptom_title").click(function(){
             $("#symptom_box").slideDown();
             $("#position_box").slideUp();
             $("#medicine_box").slideUp();
             $("#advice_box").slideUp();
             $("#action_box").slideUp();
-        });
     });
 }
 
 function showPositions() {
     $(document).ready(function(){
-        $("#position_title").click(function(){
+
             $("#symptom_box").slideUp();
             $("#position_box").slideDown();
-            // $("#medicine_box").slideUp();
-            // $("#advice_box").slideUp();
-            // $("#action_box").slideUp();
-        });
+            $("#medicine_box").slideUp();
+            $("#advice_box").slideUp();
+            $("#action_box").slideUp();
+
     });
 }
 
 function showMedicines() {
     $(document).ready(function(){
-        $("#medicine_title").click(function(){
             $("#symptom_box").slideUp();
             $("#position_box").slideUp();
             $("#medicine_box").slideDown();
             $("#advice_box").slideUp();
             $("#action_box").slideUp();
-        });
     });
 }
 
 function showActions() {
     $(document).ready(function(){
-        $("#action_title").click(function(){
             $("#action_box").slideDown();
             $("#advice_box").slideDown();
             $("#medicine_box").slideUp();
             $("#symptom_box").slideUp();
             $("#position_box").slideUp();
-        });
     });
 }
 
 function showAdvices() {
     $(document).ready(function(){
-        $("#advice_title").click(function(){
             $("#action_box").slideDown();
             $("#advice_box").slideDown();
             $("#medicine_box").slideUp();
             $("#symptom_box").slideUp();
             $("#position_box").slideUp();
-        });
     });
 }
 
