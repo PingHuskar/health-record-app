@@ -27,6 +27,7 @@
         <span id="drugAllergy"></span>
         <span id="congenitalDisease"></span>
         <span id="วิธีแก้โรคประจําตัว"></span>
+        <span id="parentContact"></span>
         <span id="error">Not Found Data / Complete Student ID</span>
     </h3>
     <!-- <div id="studentInfo">
@@ -55,7 +56,7 @@
 
         <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
         ระดับความรุนแรง <input type="number" max="3" min="1" onchange="
-        if (['1','2','3'].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this)" 
+        if (['1','2','3'].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this);" 
         list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
 
         <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
@@ -81,84 +82,84 @@
         
         <div style="background-color:#F00">
           <h3>บาดแผล</h3>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลถลอก</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฟกช้ำ</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลตัด</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลฉีกขาด</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลถูกแทง</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลไฟไหม้</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลอื่น ๆ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลถลอก</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลฟกช้ำ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลตัด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลฉีกขาด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลถูกแทง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลไฟไหม้</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลอื่น ๆ</button>
         </div>
 
         <div style="background-color:#E00">
           <h3>กล้ามเนื้อเคล็ด ขัดยอก</h3>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">เท้าพลิก</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดหลัง</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดคอ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='เท้า, ';">เท้าพลิก</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='หลัง, ';">ปวดหลัง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='คอ, ';">ปวดคอ</button>
         </div>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">กระดูกหัก แตก</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">กระดูกหัก แตก</button>
         <div style="background-color:#E00">
           <h3>ปวดท้อง</h3>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดท้องกระเพาะ</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดจุกเสียด อืด แน่นท้อง</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ท้องเสีย</button>
-            <!-- <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดประจำเดือน</button> -->
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ปวดท้องไม่ทราบสาเหตุ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">ปวดท้องกระเพาะ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">ปวดจุกเสียด อืด แน่นท้อง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">ท้องเสีย</button>
+            <!-- <button class="custom-btn btn-1" onclick="addSymptom(this);">ปวดประจำเดือน</button> -->
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">ปวดท้องไม่ทราบสาเหตุ</button>
         </div>
         <div style="background-color:#E00">
           <h3>ปวดศรีษะ</h3>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">นอนไม่อิ่ม</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">เมารถ</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">เครียด</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ไม่ทราบสาเหตุ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">นอนไม่อิ่ม</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">เมารถ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">เครียด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">ไม่ทราบสาเหตุ</button>
         </div>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">ไข้ ตัวร้อน</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">หวัด มีน้ำมูก</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">ไอ เจ็บคอ มีเสมหะ</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">คลื่นไส้ อาเจียน เวียนศรีษะ</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">แผลในช่องปาก</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">ไข้ ตัวร้อน</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">หวัด มีน้ำมูก</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">ไอ เจ็บคอ มีเสมหะ</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">คลื่นไส้ อาเจียน เวียนศรีษะ</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">แผลในช่องปาก</button>
         <div style="background-color:#E00">
           <h3>ปวดฟัน</h3>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันผุ</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันน้ำนมหลุด</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันโยก</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ฟันบิ่น</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='ฟัน, ';">ฟันผุ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='ฟัน, ';">ฟันน้ำนมหลุด</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='ฟัน, ';">ฟันโยก</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='ฟัน, ';">ฟันบิ่น</button>
         </div>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">ผื่นคัน</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">แมลงสัตว์กัดต่อย</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">ผื่นคัน</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">แมลงสัตว์กัดต่อย</button>
         <div style="background-color:#E00">
           <h3>ตา</h3>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ตาอักเสบ</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">ตาแดง</button>
-            <button class="custom-btn btn-1" onclick="addSymptom(this)">สิ่งแปลกปลอมเข้าตา</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='ตา, ';">ตาอักเสบ</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='ตา, ';">ตาแดง</button>
+            <button class="custom-btn btn-1" onclick="addSymptom(this);">สิ่งแปลกปลอมเข้าตา</button>
         </div>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">เลือดกำเดา</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">เสี้ยน</button>
-        <button class="custom-btn btn-1" onclick="addSymptom(this)">อื่น ๆ</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);document.getElementById('position').value +='จมูก, ';">เลือดกำเดา</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">เสี้ยน</button>
+        <button class="custom-btn btn-1" onclick="addSymptom(this);">อื่น ๆ</button>
         
       </div>
     </div>
     <div id="position_box">
       <h2>ตำแหน่ง</h2>
       <div class="frame">
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ศรีษะ</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">หน้าผาก</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">คิ้ว</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ตา</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">จมูก</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">หู</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">คอ</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">แขน</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ลำตัว</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ศอก</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">มือ</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ขา</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">เข่า</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">เท้า</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ลิ้นปี่</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ชายโครงซ้าย</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">ชายโครงขวา</button>
-        <button class="custom-btn btn-1" onclick="addPosition(this)">สะดือ</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ศรีษะ</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">หน้าผาก</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">คิ้ว</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ตา</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">จมูก</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">หู</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">คอ</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">แขน</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ลำตัว</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ศอก</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">มือ</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ขา</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">เข่า</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">เท้า</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ลิ้นปี่</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ชายโครงซ้าย</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">ชายโครงขวา</button>
+        <button class="custom-btn btn-1" onclick="addPosition(this);">สะดือ</button>
 
       </div>
     </div>
@@ -166,81 +167,81 @@
     <div id="medicine_box">
       <h2>ยา</h2>
       <div class="frame">
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Advice</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Air-X</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Alum milk</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ammonia</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Amsol</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Atarax</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Buscopan</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Calamine-Lotion</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Carityne</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Cold-pack</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Counter-pain</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">CPM</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dermacin</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dramamine</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dry-dressing</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Elastic-bandage</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Eye-pad</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Flemex</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Glycerin of Borax</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hirudoid</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hot-pack</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Kenalog</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">M. carminative</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Magesto-F</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Motilum</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Neobun (แก้ปวดฟัน)</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Optal</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ORS</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Oscin</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 325</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 500</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol Syr</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Plaster</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ponstan</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Reparil-gel</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Rest</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">RFB</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Spint</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Steri-strip</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Tapid-sponge</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Voltaren</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Wicks</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาหม่อง</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาธาตุน้ำขาว</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">พิมเสนน้ำ</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">น้ำหวาน</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ล้างตา</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Advice</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Air-X</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Alum milk</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Ammonia</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Amsol</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Atarax</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Buscopan</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Calamine-Lotion</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Carityne</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Cold-pack</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Counter-pain</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">CPM</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Dermacin</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Dramamine</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Dry-dressing</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Elastic-bandage</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Eye-pad</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Flemex</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Glycerin of Borax</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Hirudoid</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Hot-pack</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Kenalog</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">M. carminative</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Magesto-F</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Motilum</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Neobun (แก้ปวดฟัน)</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Optal</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">ORS</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Oscin</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Paracetamol 325</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Paracetamol 500</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Paracetamol Syr</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Plaster</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Ponstan</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Reparil-gel</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Rest</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">RFB</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Spint</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Steri-strip</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Tapid-sponge</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Voltaren</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">Wicks</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">ยาหม่อง</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">ยาธาตุน้ำขาว</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">พิมเสนน้ำ</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">น้ำหวาน</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this);">ล้างตา</button>
       </div>
     </div>
     <div id="action_box">
       <h2>การปฏิบัติ</h2>
         <div class="frame">
-          <button class="custom-btn btn-1" onclick="addAction(this)">กลับห้องเรียน</button>
-          <button class="custom-btn btn-1" onclick="addAction(this)">นอนพักห้องพยาบาล</button>
-          <button class="custom-btn btn-1" onclick="addAction(this)">ส่งโรงพยาบาล</button>
-          <button class="custom-btn btn-1" onclick="addAction(this)">รายงานผู้ปกครอง</button>
-          <button class="custom-btn btn-1" onclick="addAction(this)">รายงานครูประจำชั้น</button>
+          <button class="custom-btn btn-1" onclick="addAction(this);">กลับห้องเรียน</button>
+          <button class="custom-btn btn-1" onclick="addAction(this);">นอนพักห้องพยาบาล</button>
+          <button class="custom-btn btn-1" onclick="addAction(this);">ส่งโรงพยาบาล</button>
+          <button class="custom-btn btn-1" onclick="addAction(this);">รายงานผู้ปกครอง</button>
+          <button class="custom-btn btn-1" onclick="addAction(this);">รายงานครูประจำชั้น</button>
         </div>
       </div>
     <div id="advice_box">
       <h2>คำแนะนำ</h2>
       <div class="frame">
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ไม่ให้แผลถูกน้ำ</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ทำแผลวันละครั้ง</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารตรงเวลา</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารอ่อน ย่อยง่าย</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">งดนม</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักผ่อนให้เพียงพอ</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ดื่มน้ำให้มาก</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักการใช้งานกล้ามเนื้อ</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบเย็นภายใน 24 ชั่วโมงแรก</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบร้อนหลัง 24 ชั่วโมง</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">สังเกตอาการทางสมองภายใน 24 ชั่วโมงแรก</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ถ้าอาการไม่ดีขึ้นควรพบแพทย์</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ควรปรึกษาแพทย์ผู้เชี่ยวชาญ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">ไม่ให้แผลถูกน้ำ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">ทำแผลวันละครั้ง</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">รับประทานอาหารตรงเวลา</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">รับประทานอาหารอ่อน ย่อยง่าย</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">งดนม</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">พักผ่อนให้เพียงพอ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">ดื่มน้ำให้มาก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">พักการใช้งานกล้ามเนื้อ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">ประคบเย็นภายใน 24 ชั่วโมงแรก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">ประคบร้อนหลัง 24 ชั่วโมง</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">สังเกตอาการทางสมองภายใน 24 ชั่วโมงแรก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">ถ้าอาการไม่ดีขึ้นควรพบแพทย์</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this);">ควรปรึกษาแพทย์ผู้เชี่ยวชาญ</button>
       </div>
     </div>
     

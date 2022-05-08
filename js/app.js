@@ -119,16 +119,20 @@ function dmgContext(obj) {
                     document.getElementById('drugAllergy').style.display = "none"
                     document.getElementById('congenitalDisease').style.display = "none"
                     document.getElementById('วิธีแก้โรคประจําตัว').style.display = "none"
+                    document.getElementById('parentContact').style.display = "none"
                     document.getElementById('error').style.display = "initial"
                     document.getElementById('StudentPortrait').src = "image/notFound.png"
                 }
                 console.log(studentData);
+                document.getElementById('studentID').value = data
+                document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
                 document.getElementById('name').innerHTML = studentData["name"]
                 document.getElementById('last').innerHTML = `${studentData["last"]}<br>`
                 document.getElementById('bloodGroup').innerHTML = `กรุ๊ปเลือด : ${studentData["blood"]}<br>`
                 document.getElementById('drugAllergy').innerHTML = `แพ้ยา : LoremIpsum <br>`
                 document.getElementById('congenitalDisease').innerHTML = `โรคประจําตัว : LoremIpsum <br>`
                 document.getElementById('วิธีแก้โรคประจําตัว').innerHTML = `วิธีแก้โรคประจําตัว : LoremIpsum <br>`
+                document.getElementById('parentContact').innerHTML = `ติดต่อผู้ปกครอง : LoremIpsum <br>`
                 document.getElementById('StudentPortrait').src = "image/"+data+".jpg"
                 document.getElementById('name').style.display = "initial"
                 document.getElementById('last').style.display = "initial"
