@@ -10,14 +10,11 @@
   <link rel="stylesheet" type="text/css" href="css/button.css" />
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-  <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
-<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 </head>
 <body>
-
-  
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="js/moment.min.js"></script>
+  <script src="js/app.js"></script>
   <div class="row">
   <div class="col-md-4">
     <h3 id="studentInfo">
@@ -33,19 +30,6 @@
       <div>
         <img class="img-responsive" id="StudentPortrait" src="image/notFound.png">
       </div>
-
-      <hr>
-      <div>
-      <h2 id="action_button">การปฏิบัติ</h2>
-      <div class="frame">
-        <button class="custom-btn btn-1" onclick="addAction(this)">กลับห้องเรียน</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">นอนพักห้องพยาบาล</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">ส่งโรงพยาบาล</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานผู้ปกครอง</button>
-        <button class="custom-btn btn-1" onclick="addAction(this)">รายงานครูประจำชั้น</button>
-      </div>
-    </div>
-
   </div>
   
   <div class="col-xs-6 col-md-4">
@@ -58,148 +42,40 @@
         <span class="field__label">Enter Student ID : </span>
       </span>
     </label>
-  </div>
+    </div>
 
     <h1>ฟอร์มบันทึก</h1>
       <form action="https://docs.google.com/forms/d/e/1FAIpQLSdca0nYFvuCH8NogNo3T1WxN8zItYf_MHH7R1mh8_Pa3AUKTQ/formResponse" method="post" autocomplete="on">
         เลขประจำตัว <input type="number" id="studentID" name="entry.21566314" disabled>
         บันทึกเวลา <input type="text" id="timestamp" name="timestamp" required disabled><br>
-        <a href="#">อาการ</a>* <input type="text" id="symptom"name="symptom" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value=''"></a><br>
+        
+        <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom"name="symptom" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value=''"></a><br>
 
-        <a href="#ตำแหน่ง">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value=''"></a><br>
+        <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value=''"></a><br>
         ระดับความรุนแรง <input type="number" max="3" min="1" onchange="
-        if (['1','2','3',1,2,3].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this)" 
+        if (['1','2','3'].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this)" 
         list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
 
-        <a href="#medicine_button">ยา</a>* <input type="text" id="medicine"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value=''"></a><br>
-        <a href="#action_button">การปฏิบัติ</a>* <input type="text" id="action"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value=''"></a><br>
-        <a href="#advice_button">คำแนะนำ</a> <input type="text" id="advice"name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value=''"></a><br>
+        <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value=''"></a><br>
+        <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action"name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value=''"></a><br>
+        <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice"name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value=''"></a><br>
         หมายเหตุ <input type="text" id="note"name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
-
 
         <br>
         <center>
           <button type="submit" class="bg-success text-white" style="background-color:green">Submit</button>
           <button type="reset" class="bg-danger text-white" style="background-color:red">Reset</button>
         </center>
-        <hr>
       </form>
-      <div>
-      <h2 id="medicine_button">ยา</h2>
-      <div class="frame">
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Advice</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Air-X</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Alum milk</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ammonia</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Amsol</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Atarax</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Buscopan</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Calamine-Lotion</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Carityne</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Cold-pack</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Counter-pain</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">CPM</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dermacin</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dramamine</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dry-dressing</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Elastic-bandage</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Eye-pad</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Flemex</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Glycerin of Borax</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hirudoid</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hot-pack</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Kenalog</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">M. carminative</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Magesto-F</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Motilum</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Neobun (แก้ปวดฟัน)</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Optal</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ORS</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Oscin</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 325</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 500</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol Syr</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Plaster</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ponstan</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Reparil-gel</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Rest</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">RFB</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Spint</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Steri-strip</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Tapid-sponge</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Voltaren</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">Wicks</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาหม่อง</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาธาตุน้ำขาว</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">พิมเสนน้ำ</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">น้ำหวาน</button>
-        <button class="custom-btn btn-1" onclick="addMedicine(this)">ล้างตา</button>
-      </div>
-    </div>
-    
-    <hr>
-      <div>
-      <h2 id="advice_button">คำแนะนำ</h2>
-      <div class="frame">
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ไม่ให้แผลถูกน้ำ</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ทำแผลวันละครั้ง</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารตรงเวลา</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารอ่อน ย่อยง่าย</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">งดนม</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักผ่อนให้เพียงพอ</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ดื่มน้ำให้มาก</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักการใช้งานกล้ามเนื้อ</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบเย็นภายใน 24 ชั่วโมงแรก</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบร้อนหลัง 24 ชั่วโมง</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">สังเกตอาการทางสมองภายใน 24 ชั่วโมงแรก</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ถ้าอาการไม่ดีขึ้นควรพบแพทย์</button>
-        <button class="custom-btn btn-1" onclick="addAdvice(this)">ควรปรึกษาแพทย์ผู้เชี่ยวชาญ</button>
-      </div>
-    </div>
   </div>
 
   <div class="col-md-4">
-    <hr>
+    
     <div>
-      <h2 id="symptom">อาการ</h2>
+      <div id="symptom_box">
+      <h2>อาการ</h2>
       <br>
       <div class="frame">
-        <script type="text/javascript">
-          function addSymptom(obj){
-            document.getElementById('symptom').value = document.getElementById('symptom').value.replace(`${obj.innerHTML}, `,"") + `${obj.innerHTML}, `
-          }
-          function addPosition(obj){
-            document.getElementById('position').value = `${obj.innerHTML}`
-          }
-          function addMedicine(obj){
-            document.getElementById('medicine').value = `${obj.innerHTML}`
-          }
-          function addAction(obj){
-            document.getElementById('action').value = document.getElementById('action').value.replace(`${obj.innerHTML}, `,"") + `${obj.innerHTML}, `
-          }
-          function addAdvice(obj){
-            document.getElementById('advice').value = document.getElementById('advice').value.replace(`${obj.innerHTML}, `,"") + `${obj.innerHTML}, `
-          }
-          function dmgContext(obj) {
-            var dmgValue = document.getElementById('damage').value
-            var dmgContextVal;
-            switch(dmgValue) {
-              case "1":
-                dmgContextVal = "น้อย"
-                document.getElementById('damage_context').style.color = '#7FBD7A'
-                break;
-              case "2":
-                dmgContextVal = "ปานกลาง"
-                document.getElementById('damage_context').style.color = 'orange'
-                break;
-                case "3":
-                dmgContextVal = "มาก"
-                document.getElementById('damage_context').style.color = '#FF5656'
-                break;
-              }
-            document.getElementById('damage_context').innerHTML = `(${dmgContextVal})`
-          }
-        </script>
         
         <div style="background-color:#F00">
           <h3>บาดแผล</h3>
@@ -262,11 +138,11 @@
         <button class="custom-btn btn-1" onclick="addSymptom(this)">เลือดกำเดา</button>
         <button class="custom-btn btn-1" onclick="addSymptom(this)">เสี้ยน</button>
         <button class="custom-btn btn-1" onclick="addSymptom(this)">อื่น ๆ</button>
+        
       </div>
     </div>
-    <hr>
-    <div>
-      <h2 id="ตำแหน่ง">ตำแหน่ง</h2>
+    <div id="position_box">
+      <h2>ตำแหน่ง</h2>
       <div class="frame">
         <button class="custom-btn btn-1" onclick="addPosition(this)">ศรีษะ</button>
         <button class="custom-btn btn-1" onclick="addPosition(this)">หน้าผาก</button>
@@ -289,50 +165,90 @@
 
       </div>
     </div>
-    <hr>
     
-
+    <div id="medicine_box">
+      <h2>ยา</h2>
+      <div class="frame">
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Advice</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Air-X</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Alum milk</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ammonia</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Amsol</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Atarax</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Buscopan</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Calamine-Lotion</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Carityne</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Cold-pack</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Counter-pain</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">CPM</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dermacin</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dramamine</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Dry-dressing</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Elastic-bandage</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Eye-pad</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Flemex</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Glycerin of Borax</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hirudoid</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Hot-pack</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Kenalog</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">M. carminative</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Magesto-F</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Motilum</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Neobun (แก้ปวดฟัน)</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Optal</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ORS</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Oscin</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 325</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol 500</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Paracetamol Syr</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Plaster</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Ponstan</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Reparil-gel</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Rest</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">RFB</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Spint</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Steri-strip</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Tapid-sponge</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Voltaren</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">Wicks</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาหม่อง</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ยาธาตุน้ำขาว</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">พิมเสนน้ำ</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">น้ำหวาน</button>
+        <button class="custom-btn btn-1" onclick="addMedicine(this)">ล้างตา</button>
+      </div>
+    </div>
+    <div id="action_box">
+      <h2>การปฏิบัติ</h2>
+        <div class="frame">
+          <button class="custom-btn btn-1" onclick="addAction(this)">กลับห้องเรียน</button>
+          <button class="custom-btn btn-1" onclick="addAction(this)">นอนพักห้องพยาบาล</button>
+          <button class="custom-btn btn-1" onclick="addAction(this)">ส่งโรงพยาบาล</button>
+          <button class="custom-btn btn-1" onclick="addAction(this)">รายงานผู้ปกครอง</button>
+          <button class="custom-btn btn-1" onclick="addAction(this)">รายงานครูประจำชั้น</button>
+        </div>
+      </div>
+    <div id="advice_box">
+      <h2>คำแนะนำ</h2>
+      <div class="frame">
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ไม่ให้แผลถูกน้ำ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ทำแผลวันละครั้ง</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารตรงเวลา</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">รับประทานอาหารอ่อน ย่อยง่าย</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">งดนม</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักผ่อนให้เพียงพอ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ดื่มน้ำให้มาก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">พักการใช้งานกล้ามเนื้อ</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบเย็นภายใน 24 ชั่วโมงแรก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ประคบร้อนหลัง 24 ชั่วโมง</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">สังเกตอาการทางสมองภายใน 24 ชั่วโมงแรก</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ถ้าอาการไม่ดีขึ้นควรพบแพทย์</button>
+        <button class="custom-btn btn-1" onclick="addAdvice(this)">ควรปรึกษาแพทย์ผู้เชี่ยวชาญ</button>
+      </div>
+    </div>
+    
   </div>
 
 </div>
-  
-
-  <script>
-    var jsonArray = '{"44444":{"name": "C","last":"D"}, "44447":{"name": "E","last":"G"}}'
-    var jsonParsedArray = JSON.parse(jsonArray);
-  
-    function main(data) {
-      var val = document.getElementById('SearchVID').value
-      document.getElementById('SearchVID').value = val.replace(/\D/g,'');
-      
-      console.log(val.length,val)
-      var studentData = data[val]
-      if (data[val] === undefined) {
-        document.getElementById('studentID').value = ""
-        // document.getElementById('studentInfo').style.display = "none"
-        document.getElementById('name').style.display = "none"
-        document.getElementById('last').style.display = "none"
-        document.getElementById('error').style.display = "initial"
-        document.getElementById('StudentPortrait').src = "image/notFound.png"
-      }
-      else if (val.length === 5 && data[val] !== undefined) {
-        // console.log(studentData)
-        document.getElementById('studentID').value = val
-        document.getElementById('name').innerHTML = studentData["name"]
-        document.getElementById('last').innerHTML = studentData["last"]
-        document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
-        // document.getElementById('studentInfo').style.display = "initial"
-        document.getElementById('name').style.display = "initial"
-        document.getElementById('last').style.display = "initial"
-        document.getElementById('error').style.display = "none"
-        document.getElementById('StudentPortrait').src = "image/"+val+".jpg"
-      }
-      else {
-        
-      }
-    }
-  </script>
-
-  </center>
 </body>
 </html>
