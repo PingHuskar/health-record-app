@@ -1,3 +1,6 @@
+localStorage.setItem('pcName', 'PC1');
+localStorage.setItem('username', 'Admin1');
+
 $(document).ready(function() {
     $("#position_box").slideUp();
     $("#medicine_box").slideUp();
@@ -120,6 +123,9 @@ function main(data) {
                     document.getElementById('StudentPortrait').src = "image/notFound.png"
                 }
                 console.log(studentData);
+                
+                document.getElementById('pcName').value = localStorage.getItem('pcName')
+                document.getElementById('username').value = localStorage.getItem('username')
                 document.getElementById('studentID').value = data
                 document.getElementById('timestamp').value = moment().format('l') + " " + moment().format('LTS');
                 document.getElementById('name').innerHTML = studentData["name"]

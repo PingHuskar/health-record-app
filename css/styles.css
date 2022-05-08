@@ -296,6 +296,10 @@ button {
     transition: width 1s, height 1s, transform 1s;
 }
 
+#studentInfo:first-letter {
+  font-size: 40px;
+}
+
 #formTitle {
     margin-bottom: 2vh;
 }
@@ -340,6 +344,10 @@ button {
 
 #action_box {
   margin-top: 3vh;
+}
+
+#username, #pcName {
+  width: 20%;
 }
 
 h1,
@@ -405,12 +413,13 @@ html {
 
 #onlineresource {
     margin-top: 4vh;
+    align-items: center;
 }
 
 #database {
-    height: 20vh;
+    height: 15vh;
 }
 
 #report {
-    height: 20vh;
+    height: 15vh;
 }

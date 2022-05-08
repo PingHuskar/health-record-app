@@ -59,23 +59,25 @@
 
                 <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
                 <a href="#">ระดับความรุนแรง</a> <input type="number" max="3" min="1" onchange="
-        if (['1','2','3'].includes(this.value)) {  } else { this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this);" list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
+        if (!['1','2','3'].includes(this.value)){ this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this);" list="damage_choice" id="damage" name="damage" value="1"> &nbsp;&nbsp;&nbsp;<span id="damage_context" style="font-size:2rem"></span><br>
 
                 <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine" name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
                 <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action" name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value='';showActions()"></a><br>
                 <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice" name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value='';showAdvices();"></a><br>
                 <a href="#">หมายเหตุ</a> <input type="text" id="note" name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
-
-                <br>
+                <a href="#">ผู้ใช้</a> <input type="text" id="username" name="username" disabled> <a href="#">หมายเลขเครื่อง</a> <input type="text" id="pcName" name="pcName" disabled>
+                <br><br>
                 <center>
                     <button type="submit" class="bg-success text-white" style="background-color:green">Submit</button>
                     <button type="reset" onclick="main(document.getElementById('SearchVID').value)" class="bg-danger text-white" style="background-color:red">Reset</button>
                 </center>
             </form>
             <div id="onlineresource">
+              <center>
                 <h1 onmouseenter="this.innerHTML='Authorization Zone';this.style.color='red';" onmouseleave="this.innerHTML='เฉพาะเจ้าหน้าที่';this.style.color='white';">เฉพาะเจ้าหน้าที่</h1>
                 <a href="https://docs.google.com/spreadsheets/d/1yu6pJZP4l2qeyT9p6DIlLk-XqnuoFbfPswt1Ss14tho/edit#gid=0" target="_blank"><img id="database" src="image/sheets.png" title="Edit Submit Data"></a>
                 <a href="https://datastudio.google.com/u/0/reporting/da1dd36f-5003-4d00-a04e-8789af55a1dd/page/ouJWC/edit" target="_blank"><img id="report" src="image/DataStudio.png" title="See Report/Dashboard"></a>
+              </center>
             </div>
         </div>
 
@@ -83,7 +85,7 @@
 
             <div>
                 <div id="symptom_box">
-                    <h1>อาการ</h1>
+                    <h1 style="background-color: coral;">อาการ</h1>
                     <br>
                     <div class="frame">
 
@@ -147,7 +149,7 @@
                     </div>
                 </div>
                 <div id="position_box">
-                    <h2>ตำแหน่ง</h2>
+                    <h1 style="background-color:coral">ตำแหน่ง</h1>
                     <div class="frame">
                         <button class="custom-btn btn-1" onclick="addPosition(this);">ศรีษะ</button>
                         <button class="custom-btn btn-1" onclick="addPosition(this);">หน้าผาก</button>
@@ -172,7 +174,7 @@
                 </div>
 
                 <div id="medicine_box">
-                    <h2>ยา</h2>
+                    <h2 style="background-color:coral">ยา</h2>
                     <div class="frame">
                         <button class="custom-btn btn-1" onclick="addMedicine(this);">Advice</button>
                         <button class="custom-btn btn-1" onclick="addMedicine(this);">Air-X</button>
@@ -224,7 +226,7 @@
                     </div>
                 </div>
                 <div id="action_box">
-                    <h2>การปฏิบัติ</h2>
+                    <h2 style="background-color:coral">การปฏิบัติ</h2>
                     <div class="frame">
                         <button class="custom-btn btn-1" onclick="addAction(this);">กลับห้องเรียน</button>
                         <button class="custom-btn btn-1" onclick="addAction(this);">นอนพักห้องพยาบาล</button>
@@ -234,7 +236,7 @@
                     </div>
                 </div>
                 <div id="advice_box">
-                    <h2>คำแนะนำ</h2>
+                    <h2 style="background-color:coral">คำแนะนำ</h2>
                     <div class="frame">
                         <button class="custom-btn btn-1" onclick="addAdvice(this);">ไม่ให้แผลถูกน้ำ</button>
                         <button class="custom-btn btn-1" onclick="addAdvice(this);">ทำแผลวันละครั้ง</button>
