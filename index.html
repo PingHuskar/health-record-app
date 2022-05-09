@@ -51,24 +51,26 @@
             </div>
 
             <h1 id="formTitle">ฟอร์มบันทึก</h1>
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSdca0nYFvuCH8NogNo3T1WxN8zItYf_MHH7R1mh8_Pa3AUKTQ/formResponse" method="post" autocomplete="on">
-                <a href="#">เลขประจำตัว</a> <input type="number" id="studentID" name="entry.21566314" disabled>
-                <a href="#">บันทึกเวลา</a> <input type="text" id="timestamp" name="timestamp" required disabled><br>
+            <!-- <form autocomplete="on"> -->
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSc0c-mJiQ9ZqSbg2tAsvXkM8_GhURguU9XsWyPDqQckpyiudw/viewform" autocomplete="on">
+            <!-- <form action="https://docs.google.com/forms/d/e/1FAIpQLSc0c-mJiQ9ZqSbg2tAsvXkM8_GhURguU9XsWyPDqQckpyiudw/viewform" method="post" autocomplete="on"> -->
+                <a href="#">เลขประจำตัว</a> <input type="number" id="studentID" name="entry.1766060493" required>
+                <a href="#">บันทึกเวลา</a> <input type="text" id="timestamp" name="entry.1723537000" required><br>
 
-                <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom" name="symptom" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value='';showSymptoms();"></a><br>
+                <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom" name="entry.691623643" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value='';showSymptoms();"></a><br>
 
-                <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="position" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
-                <a onclick="showPositions()">ระดับความรุนแรง</a> <input type="number" max="3" min="1" onchange="
+                <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="entry.1549020461" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
+                <a onclick="showPositions()">ระดับความรุนแรง</a> <input type="number" name="entry.148158275" max="3" min="1" onchange="
         if (!['1','2','3'].includes(this.value)){ this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this);" list="violenceLevel_choice" id="violenceLevel" name="violenceLevel" value="1"> &nbsp;&nbsp;&nbsp;<span id="violenceLevel_context" style="font-size:2rem"></span><br>
 
-                <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine" name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
-                <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action" name="action" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value='';showActions()"></a><br>
-                <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice" name="advice"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value='';showAdvices();"></a><br>
-                <a href="#">หมายเหตุ</a> <input type="text" id="note" name="note"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
-                <a href="#">ผู้ใช้</a> <input type="text" id="username" name="username" disabled required> <a href="#">หมายเลขเครื่อง</a> <input type="text" id="pcName" name="pcName" disabled required>
+                <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine" name="entry.305144244" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
+                <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action" name="entry.1752773416" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value='';showActions()"></a><br>
+                <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice" name="entry.368198358"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value='';showAdvices();"></a><br>
+                <a href="#">หมายเหตุ</a> <input type="text" id="note" name="entry.656387245"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
+                <a href="#">ผู้ใช้</a> <input type="text" id="username" name="entry.939149648" required> <a href="#">หมายเลขเครื่อง</a> <input type="text" id="pcName" name="entry.362846848" required>
                 <br><br>
                 <center>
-                    <button type="submit" class="bg-success text-white" style="background-color:green">Submit</button>
+                    <button type="submit" onsubmit="postToGoogle()" class="bg-success text-white" style="background-color:green">Submit</button>
                     <button type="reset" onclick="main(document.getElementById('SearchVID').value)" class="bg-danger text-white" style="background-color:red">Reset</button>
                 </center>
             </form>
@@ -264,6 +266,42 @@
             </div>
 
         </div>
+        <!-- <script>
+    function postToGoogle() {
+      // var field1 = $("#Name").val();
+      // var field2 = $("#Email").val();
+      // var field3 = $("#Phone").val();
+      // var field4 = $("#Message").val();
+
+      $.ajax({
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSc0c-mJiQ9ZqSbg2tAsvXkM8_GhURguU9XsWyPDqQckpyiudw/viewform",
+          
+        //add your google form generated numbers below which are also the 'names' of your inputs     
+        data: {
+          "entry.1766060493": $("#studentID").val(),
+          "entry.1723537000": $("#timestamp").val(),
+          "entry.691623643": $("#symptom").val(),
+          "entry.1549020461": $("#position").val(),
+          "entry.148158275": $("#violenceLevel").val(),
+          "entry.305144244": $("#medicine").val(),
+          "entry.1752773416": $("#action").val(),
+          "entry.368198358": $("#advice").val(),
+          "entry.656387245": $("#note").val(),
+          "entry.939149648": $("#username").val(),
+          "entry.354351359": $("#pcName").val()
+        },
+        type: "POST",
+        dataType: "xml",
+        // success: function (d) {
+        //   $('#contact').trigger('reset');
+        // },
+        // error: function (x, y, z) {
+        //   $('#contact').trigger('reset');
+        // }
+      });
+      return false;
+    }
+  </script> -->
 </body>
 
 </html>
