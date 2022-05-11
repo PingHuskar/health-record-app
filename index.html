@@ -54,23 +54,24 @@
             </div>
 
             <h1 id="formTitle">ฟอร์มบันทึก</h1>
+            <form method="POST" action="https://script.google.com/macros/s/AKfycbx_aipvIlvMcFs4f46EwQTVdG82kVvZRegLrdL3w0NLSRbM9WM-oNhLCBp7TI7q5W9k/exec">
             <!-- <form autocomplete="on"> -->
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSc0c-mJiQ9ZqSbg2tAsvXkM8_GhURguU9XsWyPDqQckpyiudw/viewform" autocomplete="on">
+            <!-- <form action="https://docs.google.com/forms/d/e/1FAIpQLSc0c-mJiQ9ZqSbg2tAsvXkM8_GhURguU9XsWyPDqQckpyiudw/viewform" autocomplete="on"> -->
             <!-- <form action="https://docs.google.com/forms/d/e/1FAIpQLSc0c-mJiQ9ZqSbg2tAsvXkM8_GhURguU9XsWyPDqQckpyiudw/viewform" method="post" autocomplete="on"> -->
-                <a href="#">เลขประจำตัว</a> <input type="number" id="studentID" name="entry.1766060493" required>
-                <a href="#">บันทึกเวลา</a> <input type="text" id="timestamp" name="entry.1723537000" required><br>
+                <a href="#">เลขประจำตัว</a> <input type="number" id="studentID" name="เลขประจำตัว" required>
+                <a href="#">บันทึกเวลา</a> <input type="text" id="timestamp" name="บันทึกเวลา" required><br>
 
-                <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom" name="entry.691623643" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value='';showSymptoms();"></a><br>
+                <a onclick="showSymptoms()" id="symptom_title">อาการ</a>* <input type="text" id="symptom" name="อาการ" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('symptom').value='';showSymptoms();"></a><br>
 
-                <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="entry.1549020461" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
-                <a onclick="showPositions()">ระดับความรุนแรง</a> <input type="number" name="entry.148158275" max="3" min="1" onchange="
+                <a onclick="showPositions()" id="position_title">ตำแหน่ง</a>* <input type="text" id="position" name="ตำแหน่ง" required autocomplete="off"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('position').value='';showPositions();"></a><br>
+                <a onclick="showPositions()">ระดับความรุนแรง</a> <input type="number" name="ระดับความรุนแรง" max="3" min="1" onchange="
         if (!['1','2','3'].includes(this.value)){ this.value = '1' };dmgContext(this);" onmouseenter="dmgContext(this);" list="violenceLevel_choice" id="violenceLevel" name="violenceLevel" value="1"> &nbsp;&nbsp;&nbsp;<span id="violenceLevel_context" style="font-size:2rem"></span><br>
 
-                <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine" name="entry.305144244" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
-                <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action" name="entry.1752773416" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value='';showActions()"></a><br>
-                <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice" name="entry.368198358"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value='';showAdvices();"></a><br>
-                <a href="#">หมายเหตุ</a> <input type="text" id="note" name="entry.656387245"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
-                <a href="#">ผู้ใช้</a> <input type="text" id="username" name="entry.939149648" required> <a href="#">หมายเลขเครื่อง</a> <input type="text" id="pcName" name="entry.362846848" required>
+                <a onclick="showMedicines()" id="medicine_title">ยา</a>* <input type="text" id="medicine" name="ยา" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('medicine').value='';showMedicines();"></a><br>
+                <a onclick="showActions()" id="action_title">การปฏิบัติ</a>* <input type="text" id="action" name="การปฏิบัติ" required> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('action').value='';showActions()"></a><br>
+                <a onclick="showAdvices()" id="advice_title">คำแนะนำ</a> <input type="text" id="advice" name="คำแนะนำ"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('advice').value='';showAdvices();"></a><br>
+                <a href="#">หมายเหตุ</a> <input type="text" id="note" name="หมายเหตุ"> <a href="#"><img src="image/bin.png" width="20px" onclick="document.getElementById('note').value=''"></a><br>
+                <a href="#">ผู้ใช้</a> <input type="text" id="username" name="ผู้ใช้" required> <a href="#">หมายเลขเครื่อง</a> <input type="text" id="pcName" name="หมายเลขเครื่อง" required>
                 <br><br>
                 <center>
                     <button type="submit" onsubmit="postToGoogle()" class="bg-success text-white" style="background-color:green">Submit</button>

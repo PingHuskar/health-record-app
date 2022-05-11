@@ -8,20 +8,24 @@ Last, Create data studio to automate report & dashboard
 
 # How to run server
 
-install
-npm install http-server -g
+- install
+	npm install http-server -g
 
-run server
-http-server -c-1
+- run server
+	http-server -c-1
 
-stop server
-press <kdb>Ctrl + C</kdb>
+- stop server
+	press <kdb>Ctrl + C</kdb>
 
 ref : https://stackoverflow.com/questions/38497334/how-to-run-html-file-on-localhost
 
+# Old version
 after click submit button
 scroll down and click submit button in google forms
 
 # demo
-## [Sheets](https://docs.google.com/spreadsheets/d/1FUoaoJskxvL8MYIfYsR-mbI7hUxZmAbNj8eySvg_wCc/edit?usp=sharing)
-## [Data Studio Report](https://datastudio.google.com/reporting/36f7f7c9-1463-41cf-924f-20e94673443d)
+- [Sheets](https://docs.google.com/spreadsheets/d/1FUoaoJskxvL8MYIfYsR-mbI7hUxZmAbNj8eySvg_wCc/edit?usp=sharing)
+- [Data Studio Report](https://datastudio.google.com/reporting/36f7f7c9-1463-41cf-924f-20e94673443d)
+
+# New Version
+- [Submit a HTML form to Google Sheets](https://github.com/levinunnink/html-form-to-google-sheet)
