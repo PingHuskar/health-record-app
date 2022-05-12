@@ -30,7 +30,9 @@ p {
 }
 
 .custom-btn {
+  min-width: 120px;
   width: 10vw;
+  max-width: 200px;
   height: 6vh;
   color: #fff;
   border-radius: 25px;

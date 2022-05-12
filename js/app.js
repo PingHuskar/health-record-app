@@ -4,6 +4,9 @@ while (localStorage.getItem('username') === 'null' || localStorage.getItem('user
     localStorage.setItem('username', prompt("Enter Username", "admin123"));
 }
 $(document).ready(function() {
+    $('button').attr('tabindex', '-1');
+});
+$(document).ready(function() {
     $("#position_box").slideUp();
     $("#medicine_box").slideUp();
     $("#advice_box").slideUp();
